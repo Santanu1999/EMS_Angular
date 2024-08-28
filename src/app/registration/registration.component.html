@@ -1,0 +1,35 @@
+<h1>Employee Registration</h1>
+<nav id="navbar-example2" class="navbar navbar-light bg-light">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/employees">All Employees</a>
+        </li>
+    </ul>
+</nav>
+<div class="card" style="width: 40rem;">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <input id="first_name" class="form-control" formControlName="first_name" type="text">
+        </div>
+
+        <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input id="last_name" class="form-control" formControlName="last_name" type="text">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input id="email" class="form-control" formControlName="email" type="email">
+        </div>
+        <div class="form-group">
+            <label for="department">Department:</label>
+            <input id="department" class="form-control" formControlName="department" type="text">
+        </div>
+        <div class="form-group">
+            <label for="date_joined">Date Joined:</label>
+            <input id="date_joined" class="form-control" formControlName="date_joined" type="date">
+        </div>
+        <button class="btn btn-primary" type="submit">{{ selectedEmployee ? 'Update' : 'Add' }} Employee</button>
+        <button class="btn btn-secondary" type="button" (click)="cancelEdit()" *ngIf="selectedEmployee">Cancel</button>
+    </form>
+</div>

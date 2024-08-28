@@ -1,0 +1,40 @@
+<h2>Employee Management</h2>
+
+<nav id="navbar-example2" class="navbar navbar-light bg-light">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/registration">Add New Employee</a>
+        </li>
+    </ul>
+</nav>
+
+
+<h3>Employee List</h3>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Department</th>
+            <th scope="col">Date_joined</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees; index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{ employee.first_name }}</td>
+            <td>{{ employee.last_name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.department }}</td>
+            <td>{{ employee.date_joined }}</td>
+            <td>
+                <button class="btn btn-warning" (click)="editEmployee(employee)">Edit</button>
+                <button class="btn btn-danger" (click)="deleteEmployee(employee.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
