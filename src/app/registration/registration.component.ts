@@ -1,6 +1,7 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../auth.service';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../models/Employee';
 import { ShareemployeeService } from '../shared/shareemployee.service';
@@ -14,7 +15,7 @@ export class RegistrationComponent implements OnInit , OnDestroy{
   employeeForm: FormGroup;
   employees: Employee[] = [];
 
-  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private sharedEmployeeService: ShareemployeeService) {
+  constructor(private authService: AuthService,private fb: FormBuilder, private employeeService: EmployeeService, private sharedEmployeeService: ShareemployeeService) {
     this.employeeForm = this.fb.group({
       first_name: [''],
       last_name: [''],
@@ -33,6 +34,10 @@ export class RegistrationComponent implements OnInit , OnDestroy{
   }
 
   selectedEmployee: Employee | null = null;
+
+  logout(){
+    this.authService.logout();
+  }
 
   onSubmit(): void {
     if (this.selectedEmployee) {

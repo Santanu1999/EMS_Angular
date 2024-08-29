@@ -4,6 +4,7 @@ import { EmployeeService } from '../employee.service';
 import { Employee } from '../models/Employee';
 import { ShareemployeeService } from '../shared/shareemployee.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-employee',
@@ -14,7 +15,7 @@ export class EmployeeComponent {
   employees: Employee[] = [];
 
 
-  constructor(private employeeService: EmployeeService, private sharedEmployeeService: ShareemployeeService, private router: Router) {
+  constructor(private authService: AuthService,private employeeService: EmployeeService, private sharedEmployeeService: ShareemployeeService, private router: Router) {
   }
 
   fetchEmployee() {
@@ -22,6 +23,10 @@ export class EmployeeComponent {
       this.employees = data.data;
       // console.log(data);
     });
+  }
+
+  logout(){
+    this.authService.logout();
   }
 
   ngOnInit(): void {
