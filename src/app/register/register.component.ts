@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { NotificationService } from '../notification-service.service';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +14,7 @@ export class RegisterComponent {
   errorMessage: string = '';
 
   constructor(
+    private notificationService: NotificationService,
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router
@@ -28,7 +30,10 @@ export class RegisterComponent {
     if (this.registerForm.valid && this.passwordsMatch()) {
       const { username, password } = this.registerForm.value;
       this.authService.register(username, password).subscribe({
-        next: () => this.router.navigate(['/login']),
+        next: () => {
+          this.router.navigate(['/login']);
+          this.notificationService.showSuccess('User registered successfully!');
+        },
         error: err => this.errorMessage = 'Registration failed. Please try again.'
       });
     } else {

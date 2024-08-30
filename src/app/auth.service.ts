@@ -18,6 +18,7 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}token/`, { username, password }).pipe(
       map(token => {
         localStorage.setItem('access_token', token.access);
+        localStorage.setItem('refresh_token', token.refresh);
         return token;
       })
     );
@@ -25,6 +26,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
     this.router.navigate(['/login']);
   }
 

@@ -5,6 +5,7 @@ import { Employee } from '../models/Employee';
 import { ShareemployeeService } from '../shared/shareemployee.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { NotificationService } from '../notification-service.service';
 
 @Component({
   selector: 'app-employee',
@@ -15,7 +16,7 @@ export class EmployeeComponent {
   employees: Employee[] = [];
 
 
-  constructor(private authService: AuthService,private employeeService: EmployeeService, private sharedEmployeeService: ShareemployeeService, private router: Router) {
+  constructor(private notificationService: NotificationService,private authService: AuthService,private employeeService: EmployeeService, private sharedEmployeeService: ShareemployeeService, private router: Router) {
   }
 
   fetchEmployee() {
@@ -40,7 +41,8 @@ export class EmployeeComponent {
 
   deleteEmployee(id: any): void {
     this.employeeService.deleteEmployee(id)
-      .subscribe(() => { this.fetchEmployee() });
+      .subscribe(() => { this.fetchEmployee();
+        this.notificationService.showSuccess('Employee deleted successfully!'); });
   }
 
 

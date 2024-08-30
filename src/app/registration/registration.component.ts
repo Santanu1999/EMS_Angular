@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../models/Employee';
+import { NotificationService } from '../notification-service.service';
 import { ShareemployeeService } from '../shared/shareemployee.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class RegistrationComponent implements OnInit , OnDestroy{
   employeeForm: FormGroup;
   employees: Employee[] = [];
 
-  constructor(private authService: AuthService,private fb: FormBuilder, private employeeService: EmployeeService, private sharedEmployeeService: ShareemployeeService) {
+  constructor(private notificationService: NotificationService,private authService: AuthService,private fb: FormBuilder, private employeeService: EmployeeService, private sharedEmployeeService: ShareemployeeService) {
     this.employeeForm = this.fb.group({
       first_name: [''],
       last_name: [''],
@@ -54,6 +55,7 @@ export class RegistrationComponent implements OnInit , OnDestroy{
         this.employees.push(employee);
         this.employeeForm.reset();
       });
+      this.notificationService.showSuccess('New Employee created successfully!');
   }
 
   updateEmployee(): void {
@@ -64,7 +66,9 @@ export class RegistrationComponent implements OnInit , OnDestroy{
           this.employees = this.employees.map(emp => emp.id === employee.id ? employee : emp);
           this.selectedEmployee = null;
           this.employeeForm.reset();
+          this.notificationService.showSuccess('Employee updated successfully!');
         });
+        
     }
   }
 
