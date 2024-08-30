@@ -13,6 +13,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AuthService } from './auth.service';
 import { JwtInterceptor } from './auth/jwt-interceptor.service';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -23,7 +24,8 @@ export function tokenGetter() {
     AppComponent,
     EmployeeComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ['localhost:8000'],  // Update with your backend domain
+        allowedDomains: ['localhost:8000/api/v1'],  // Update with your backend domain
         disallowedRoutes: []
       }
     })

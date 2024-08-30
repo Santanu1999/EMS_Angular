@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8000/api/';  // Update with your Django backend URL
+  private apiUrl = 'http://localhost:8000/api/v1/';  // Update with your Django backend URL
 
   constructor(private router:Router,private http: HttpClient, public jwtHelper: JwtHelperService) {}
 
@@ -31,6 +31,10 @@ export class AuthService {
   public isAuthenticated(): boolean {
     const token = localStorage.getItem('access_token');
     return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  register(username: string, password: string): Observable<any> {
+    return this.http.post<any>('http://127.0.0.1:8000/api/new/register/', { username, password });
   }
 
   getToken() {
