@@ -41,7 +41,7 @@ export function tokenGetter() {
       config: {
         tokenGetter: tokenGetter,
         allowedDomains: ['localhost:8000/api/v1'],  // Update with your backend domain
-        disallowedRoutes: ['http://127.0.0.1:8000/api/new/register/']
+        disallowedRoutes: []
       }
     }),
     BrowserAnimationsModule
