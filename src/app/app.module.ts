@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +34,7 @@ export function tokenGetter() {
   imports: [
     BrowserModule,
     MatSnackBarModule,
+    MatPaginatorModule,
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,

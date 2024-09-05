@@ -1,3 +1,4 @@
+
 <h2>Employee Management</h2>
 
 <nav id="navbar-example2" class="navbar navbar-light bg-light">
@@ -25,7 +26,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let employee of employees; index as i">
+        <tr *ngFor="let employee of paginatedItems; index as i">
             <th scope="row">{{i+1}}</th>
             <td>{{ employee.first_name }}</td>
             <td>{{ employee.last_name }}</td>
@@ -39,3 +40,5 @@
         </tr>
     </tbody>
 </table>
+<mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" (page)="onPageChange($event)">
+</mat-paginator>
