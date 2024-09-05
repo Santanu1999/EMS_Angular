@@ -1,11 +1,8 @@
-
-<h2>Employee Management</h2>
-
+<app-navbar></app-navbar>
 <nav id="navbar-example2" class="navbar navbar-light bg-light">
     <ul class="nav nav-pills">
         <li class="nav-item">
-            <a class="nav-link" routerLink="/registration">Add New Employee</a>
-            <button class="btn btn-primary" (click)="logout()">Logout</button>
+            <a class="btn btn-outline-primary" routerLink="/registration">Add New Employee</a>
         </li>
     </ul>
 </nav>
@@ -34,8 +31,8 @@
             <td>{{ employee.department }}</td>
             <td>{{ employee.date_joined }}</td>
             <td>
-                <button class="btn btn-warning" (click)="editEmployee(employee)">Edit</button>
-                <button class="btn btn-danger" (click)="deleteEmployee(employee.id)">Delete</button>
+                <button class="btn btn-outline-warning" (click)="editEmployee(employee)">Edit</button>
+                <button class="btn btn-outline-danger" (click)="deleteEmployee(employee.id)">Delete</button>
             </td>
         </tr>
     </tbody>

@@ -17,6 +17,7 @@ export class AuthService {
   login(username: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}token/`, { username, password }).pipe(
       map(token => {
+        localStorage.setItem("username",username);
         localStorage.setItem('access_token', token.access);
         localStorage.setItem('refresh_token', token.refresh);
         return token;

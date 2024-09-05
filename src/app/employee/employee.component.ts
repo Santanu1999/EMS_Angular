@@ -16,6 +16,7 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class EmployeeComponent {
   employees: Employee[] = [];
+  
   paginatedItems:Employee[] = []; // Array to hold the current page of items
   totalItems =0; // Set total number of items
   pageSize = 5; // Default page size

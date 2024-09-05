@@ -1,9 +1,8 @@
-<h2>Employee Registration</h2>
+<app-navbar></app-navbar>
 <nav id="navbar-example2" class="navbar navbar-light bg-light">
     <ul class="nav nav-pills">
         <li class="nav-item">
-            <a class="nav-link" routerLink="/employees">All Employees</a>
-            <button class="btn btn-primary" (click)="logout()">Logout</button>
+            <a class="btn btn-outline-primary" routerLink="/employees">All Employees</a>
         </li>
     </ul>
 </nav>
@@ -30,7 +29,7 @@
             <label for="date_joined">Date Joined:</label>
             <input id="date_joined" class="form-control" formControlName="date_joined" type="date">
         </div>
-        <button class="btn btn-primary" type="submit">{{ selectedEmployee ? 'Update' : 'Add' }} Employee</button>
-        <button class="btn btn-secondary" type="button" (click)="cancelEdit()" *ngIf="selectedEmployee">Cancel</button>
+        <button class="btn btn-outline-primary" type="submit">{{ selectedEmployee ? 'Update' : 'Add' }} Employee</button>
+        <button class="btn btn-outline-secondary" type="button" (click)="cancelEdit()" *ngIf="selectedEmployee">Cancel</button>
     </form>
 </div>
